@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-
+#
 # build-nautilus-typeahead-rpm
-
+#
 # Automatically builds GNOME Files with type-ahead
 # functionality for Fedora Workstation/Silverblue.
 
@@ -236,20 +236,20 @@ fi
 
 # Clean up build files and folders.
 if [ -z "$NOCLEAN" ]; then
-  echo -e "\nCleaning up build files and folders..."
-  find "${HOME}/rpmbuild" \
-    \( -name '*nautilus-typeahead*' \
-    -o -name 'default-terminal.patch' \
-    -o -name 'nautilus-restore-typeahead.patch' \
-    -o -name "nautilus-${VERSION}.tar.xz" \
-    -o -name "nautilus-${VERSION}-${RELEASE}.fc${FEDORA}.src.rpm" \) \
-    -print -exec rm -rf {} + &&
-   # Remove source files from build directory.
-   rm -rf "${cwd}/build/${PACKAGE}/nautilus-${VERSION}" &&
-   echo "${cwd}/build/${PACKAGE}/nautilus-${VERSION}" &&
-   # Delete rpmbuild directory if empty after cleanup.
-   [ -z "$(find "${HOME}/rpmbuild" -mindepth 1 ! -type d -print -quit)" ] &&
-   find "${HOME}/rpmbuild" -type d -empty -print -delete
+    echo -e "\nCleaning up build files and folders..."
+    find "${HOME}/rpmbuild" \
+        \( -name '*nautilus-typeahead*' \
+        -o -name 'default-terminal.patch' \
+        -o -name 'nautilus-restore-typeahead.patch' \
+        -o -name "nautilus-${VERSION}.tar.xz" \
+        -o -name "nautilus-${VERSION}-${RELEASE}.fc${FEDORA}.src.rpm" \) \
+        -print -exec rm -rf {} + &&
+    # Remove source files from build directory.
+    rm -rf "${cwd}/build/${PACKAGE}/nautilus-${VERSION}" &&
+    echo "${cwd}/build/${PACKAGE}/nautilus-${VERSION}" &&
+    # Delete rpmbuild directory if empty after cleanup.
+    [ -z "$(find "${HOME}/rpmbuild" -mindepth 1 ! -type d -print -quit)" ] &&
+    find "${HOME}/rpmbuild" -type d -empty -print -delete
 fi
 
 # Suggest cleaning up dependencies.
